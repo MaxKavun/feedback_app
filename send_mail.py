@@ -5,7 +5,7 @@ from email.mime.text import MIMEText
 def send_mail(customer, dealer, rating, comments):
     port = 25
     smtp_server = 'mail.maxkavun.us'
-    login = 'matie@maxkavun.us'
+    login = 'matie'
     password = 'qwerty'
     message = f"<h3>New Feedback Submission</h3><ul><li>Customer: {customer}</li><li>Dealer: {dealer}</li><li>Rating: {rating}</li><li>Comments: {comments}</li></ul>"
 
