@@ -3,7 +3,7 @@ from email.mime.text import MIMEText
 
 
 def send_mail(customer, dealer, rating, comments):
-    port = 2525
+    port = 25
     smtp_server = 'mail.maxkavun.us'
     login = 'matie@maxkavun.us'
     password = 'qwerty'
