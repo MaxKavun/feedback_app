@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from send_mail import send_mail
+import os
 
 app = Flask(__name__)
 
@@ -8,10 +9,10 @@ ENV = 'dev'
 
 if ENV == 'dev':
     app.debug = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:qwerty@192.168.131.157/feedback'
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://root:qwerty@{os.environ.get("SQL_HOST")}/feedback'
 else:
     app.debug = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:qwerty@192.168.131.157/feedback'
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://root:qwerty@{os.environ.get("SQL_HOST")}/feedback'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
