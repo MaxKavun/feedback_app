@@ -4,7 +4,7 @@ services:
   web:
     image: cruelgangsta/py_feedback_app:${FEEDBACK_VERSION}
     ports:
-      - "8080:5000"
+      - "8090:5000"
     environment:
       SQL_HOST: db
   db:
@@ -14,5 +14,10 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: qwerty
       MYSQL_DATABASE: feedback
-    volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  
+    configs:
+      - source: init_sql
+        target: /docker-entrypoint-initdb.d/init.sql
+
+configs:
+  init_sql:
+    file: ./init.sql
